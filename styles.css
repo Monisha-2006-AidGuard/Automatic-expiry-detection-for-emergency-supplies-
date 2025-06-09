@@ -1,0 +1,120 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f7fb;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #0077cc;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+/* Form Section */
+.form-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-section h2 {
+  margin-bottom: 1rem;
+  color: #0077cc;
+}
+
+.form-section input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-section button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-section button:hover {
+  background-color: #218838;
+}
+
+/* Item List */
+.item-list {
+  margin-top: 2rem;
+}
+
+/* Individual Item Cards */
+.item {
+  background: white;
+  border-left: 8px solid #28a745;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.item.expiring-soon {
+  border-left-color: #ffc107;
+}
+
+.item.expired {
+  border-left-color: #dc3545;
+}
+
+.item strong {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.item small {
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .form-section button {
+    font-size: 0.9rem;
+  }
+}
