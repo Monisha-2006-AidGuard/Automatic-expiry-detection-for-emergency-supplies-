@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AidGuard: Automatic Expiry Detection for Emergency Supplies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2e3b4e;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .input-field {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .expiry-info {
+            background-color: #ffeb3b;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .expiry-info p {
+            margin: 0;
+        }
+
+        .expiry-warning {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AidGuard: Automatic Expiry Detection</h1>
+    <p>Track and manage your emergency supplies' expiry dates.</p>
+</header>
+
+<div class="container">
+    <h2>Add New Emergency Supply</h2>
+    <form id="expiryForm">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" class="input-field" placeholder="Enter item name" required>
+
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="date" id="expiryDate" class="input-field" required>
+
+        <button type="submit" class="submit-btn">Add Item</button>
+    </form>
+
+    <div id="expiryInfo" class="expiry-info" style="display: none;">
+        <h3>Expiry Status:</h3>
+        <p id="expiryMessage"></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('expiryForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const itemName = document.getElementById('itemName').value;
+        const expiryDate = new Date(document.getElementById('expiryDate').value);
+        const currentDate = new Date();
+
+        const infoBox = document.getElementById('expiryInfo');
+        const expiryMessage = document.getElementById('expiryMessage');
+
+        if (expiryDate < currentDate) {
+            expiryMessage.innerHTML = `<strong class="expiry-warning">${itemName} has expired!</strong> Please replace it as soon as possible.`;
+        } else {
+            const daysRemaining = Math.ceil((expiryDate - currentDate) / (1000 * 3600 * 24));
+            expiryMessage.innerHTML = `${itemName} will expire in ${daysRemaining} days.`;
+        }
+
+        infoBox.style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
